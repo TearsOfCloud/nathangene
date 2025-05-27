@@ -62,9 +62,9 @@ document.addEventListener("DOMContentLoaded", function() {
   function updateLogoForTheme() {
     if (!logoImg) return;
     if (document.body.classList.contains('dark')) {
-      logoImg.src = '../img/logo-light.png';
+      logoImg.src = 'logo-light.png';
     } else {
-      logoImg.src = '../img/logo-dark.png';
+      logoImg.src = 'logo-dark.png';
     }
   }
   updateLogoForTheme();
