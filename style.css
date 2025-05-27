@@ -1,0 +1,384 @@
+body {
+  cursor: none; /* masque le curseur natif */
+}
+.custom-cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--accent, #587ef4);         /* Plein par défaut */
+  border: 2px solid var(--accent, #587ef4);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: background 0.18s, border-color 0.16s;
+  z-index: 10000;
+}
+.custom-cursor.is-hovering {
+  background: transparent;                    /* Vide au hover */
+  border: 2px solid var(--accent, #587ef4);
+}
+
+/* Apparence "vide" (juste bordure) */
+.custom-cursor.is-hovering {
+  background: transparent; /* Plus de fond ! */
+  border: 2px solid var(--accent, #587ef4);
+}
+
+.logoImg {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%; /* Cercle parfait */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06); /* optionnel : petite ombre douce */
+  background: #fff; /* optionnel : pour éviter le contour noir si le logo n'est pas carré */
+}
+
+.top-actions-split {
+  display: flex;
+  justify-content: space-between;  /* Un à gauche, un à droite */
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 18px;             /* Espace sous les boutons */
+}
+
+.theme-switch, .lang-switch {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  padding: 7px 17px;
+  border-radius: 20px;
+  min-width: 44px;
+  font-size: 1.15rem;
+  margin: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: background 0.18s, color 0.16s, transform 0.13s;
+  cursor: pointer;
+}
+
+/* Responsive pour mobile/tablette */
+@media (max-width: 600px) {
+  .top-actions-split {
+    margin-bottom: 10px;
+  }
+  .theme-switch, .lang-switch {
+    font-size: 1rem;
+    padding: 6px 12px;
+    min-width: 36px;
+  }
+}
+
+:root {
+  --bg: #fff;
+  --text: #111;
+  --btn-bg: #111;
+  --btn-text: #fff;
+  --accent: #587ef4;
+  --focus: #587ef4;
+}
+
+body.dark {
+  --bg: #111;
+  --text: #fff;
+  --btn-bg: #fff;
+  --btn-text: #111;
+}
+
+body, .container {
+  background: var(--bg);
+  color: var(--text);
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 1.5s;
+  width: 90vw;
+  max-width: 400px;
+  text-align: center;
+  border-radius: 18px;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.09);
+  padding: 40px 20px;
+  margin: 20px 0;
+  background: rgba(255,255,255,0.96);
+}
+
+body.dark .container {
+  background: rgba(30,30,30,0.98);
+  box-shadow: 0 6px 32px rgba(0,0,0,0.18);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(25px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+.floating-burger-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-bottom: 22px;
+}
+.burger-main {
+  background: var(--btn-bg);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  cursor: pointer;
+  transition: background 0.16s, transform 0.19s cubic-bezier(.7,-0.24,.29,1.36);
+  color: var(--btn-text);
+  margin-bottom: 8px;
+  outline: none;
+  font-size: 1.1rem;
+  padding: 0;
+  z-index: 10;
+}
+.burger-main svg { display: block; }
+.floating-burger-menu.open .burger-main {
+  /* Monte le bouton */
+  transform: translateY(-28px) scale(1.07);
+  box-shadow: 0 12px 32px rgba(60,90,180,0.14);
+}
+.burger-main:focus {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(88,126,244,0.13);
+  background: var(--accent);
+  color: #fff;
+}
+.burger-main:active {
+  background: var(--accent);
+  color: #fff;
+}
+
+.burger-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  user-select: none;
+  margin-top: -8px; /* pour qu’ils apparaissent plus proches après l’anim */
+}
+.burger-link {
+  opacity: 0;
+  transform: translateY(-22px) scale(0.93);
+  pointer-events: none;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  border-radius: 18px;
+  padding: 10px 32px;
+  font-size: 1.08rem;
+  font-weight: 500;
+  margin: 7px 0 0 0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  transition:
+    opacity 0.22s cubic-bezier(.63,-0.19,.32,1.22),
+    transform 0.20s cubic-bezier(.63,-0.19,.32,1.22),
+    background 0.17s, color 0.15s;
+}
+/* Apparition "stagger" */
+.floating-burger-menu.open .burger-link {
+  pointer-events: auto;
+}
+.floating-burger-menu.open .burger-link:nth-child(1) {
+  opacity: 1; transform: translateY(0) scale(1); transition-delay: 0.11s;
+}
+.floating-burger-menu.open .burger-link:nth-child(2) {
+  opacity: 1; transform: translateY(0) scale(1); transition-delay: 0.22s;
+}
+.floating-burger-menu.open .burger-link:nth-child(3) {
+  opacity: 1; transform: translateY(0) scale(1); transition-delay: 0.33s;
+}
+.burger-link:focus, .burger-link:focus-visible {
+  outline: 2px solid var(--accent);
+  background: var(--btn-bg);
+  color: var(--btn-text);
+}
+.burger-link:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.burger-link:active {
+  background: var(--accent);
+  color: #fff;
+  outline: 2px solid var(--focus);
+}
+.burger-row {
+  display: flex;
+  justify-content: center;    /* centre horizontalement */
+  align-items: center;        /* centre verticalement si tu veux toute la hauteur, sinon inutile */
+  width: 100%;
+  margin: 22px 0 18px 0;      /* espace avec le reste, ajuste selon tes goûts */
+}
+
+.floating-burger-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+@media (max-width:600px) {
+  .floating-burger-menu { margin-bottom: 10px;}
+  .burger-main { width: 48px; height: 48px; font-size: 1.2rem;}
+  .burger-link { padding: 8px 14px; font-size: 1rem;}
+}
+
+.logo {
+  margin-bottom: 24px;
+}
+
+h1, h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+  margin-top: 0;
+}
+h2 { font-size: 1.4rem; }
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+
+.btn-group {
+  display: flex;
+  gap: 18px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+button, .theme-switch, .lang-switch {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  padding: 13px 30px;
+  border-radius: 32px;
+  font-size: 1.08rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  transition: transform 0.18s, background 0.17s, box-shadow 0.17s;
+  outline: none;
+  margin: 0 0 0 0;
+  opacity: 1;
+  margin-bottom: 0;
+}
+button:focus, .theme-switch:focus, .lang-switch:focus, input:focus, textarea:focus {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px rgba(88,126,244,0.16);
+}
+button:hover, .theme-switch:hover, .lang-switch:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: scale(1.07);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+}
+
+@media (max-width: 600px) {
+  .container { padding: 25px 7px; }
+  h1 { font-size: 1.15rem;}
+  h2 { font-size: 1rem;}
+  button, .theme-switch, .lang-switch { padding: 10px 12px; font-size: 1rem;}
+  .btn-group { flex-direction: column; gap: 12px;}
+}
+
+/* Réseaux sociaux */
+.socials {
+  margin-top: 22px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.socials a img {
+  filter: grayscale(1) contrast(1.2);
+  opacity: 0.85;
+  transition: filter 0.22s, opacity 0.19s;
+}
+.socials a:hover img, .socials a:focus img {
+  filter: none;
+  opacity: 1;
+}
+
+/* Contact form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.contact-form label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 1rem;
+  color: var(--text);
+}
+.contact-form input, .contact-form textarea {
+  width: 100%;
+  margin-top: 3px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  padding: 7px 11px;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--bg);
+  transition: border 0.2s;
+}
+body.dark .contact-form input, body.dark .contact-form textarea {
+  border: 1px solid #444;
+}
+.contact-form input:focus, .contact-form textarea:focus {
+  border: 1.5px solid var(--accent);
+}
+
+/* Pour accessibilité : rendre visible le focus clavier */
+a:focus, button:focus, input:focus, textarea:focus {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+.social-link svg {
+  color: var(--text); /* suit ton thème */
+  transition: color 0.17s;
+}
+.social-link:hover svg,
+.social-link:focus svg {
+  color: var(--accent, #587ef4);
+}
+body.dark .social-link svg {
+  color: #fff;
+}
+
+.social-link svg {
+  color: var(--text); /* Suivant ton thème */
+  transition: color 0.18s;
+}
+.social-link:hover svg,
+.social-link:focus svg {
+  color: var(--accent, #587ef4);
+}
+body.dark .social-link svg {
+  color: #fff;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title data-fr="Bienvenue" data-en="Welcome">Bienvenue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#111111">
+</head>
+<body>
+  <div class="custom-cursor"></div>
+  <div class="container">
+    <div class="top-actions-split">
+      <button id="themeSwitch" class="theme-switch" aria-label="Basculer le mode sombre"></button>
+      <button id="langSwitch" class="lang-switch" aria-label="Switch to English" tabindex="0" data-fr="EN" data-en="FR">EN</button>
+    </div>
+    <div class="logo">
+      <img id="logoImg" src="../img/logo-light.png" alt="Logo Nathan Gene" width="60" height="60">
+    </div>
+  <h1 data-fr="Bienvenue sur mon univers créatif" data-en="Welcome to my creative world">Bienvenue sur mon univers créatif</h1>
+<br><br><br>
+  <div class="floating-burger-menu">
+    <button id="burgerBtn" class="burger-main" aria-label="Menu principal" tabindex="0">
+        <!-- Icône burger SVG -->
+        <svg width="24" height="24" viewBox="0 0 24 24">
+          <rect x="4" y="6" width="16" height="2.5" rx="1.2" fill="currentColor"/>
+          <rect x="4" y="11" width="16" height="2.5" rx="1.2" fill="currentColor"/>
+          <rect x="4" y="16" width="16" height="2.5" rx="1.2" fill="currentColor"/>
+        </svg>
+      </button>
+      <div id="burgerLinks" class="burger-links">
+        <button class="burger-link" id="burgerEntrer" data-fr="Entrer" data-en="Enter">Entrer</button>
+        <button class="burger-link" onclick="window.location.href='about.html'" data-fr="À propos" data-en="About">À propos</button>
+        <button class="burger-link" onclick="window.location.href='contact.html'" data-fr="Contact" data-en="Contact">Contact</button>
+      </div>
+    </div>
+    <div class="socials">
+      <a href="https://linkedin.com/" class="social-link" target="_blank" aria-label="LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 32 32" fill="none">
+          <path d="M8 12h4v12H8V12zm2-6a2 2 0 100 4 2 2 0 000-4zm6 6h4v2h.02c.55-1.04 1.89-2 3.98-2C26.88 12 28 13.06 28 15.28V24h-4v-7.24c0-1.31-.02-3-1.82-3-1.82 0-2.1 1.42-2.1 2.89V24h-4V12z" fill="currentColor"/>
+        </svg>
+      </a>
+      <a href="https://instagram.com/" class="social-link" target="_blank" aria-label="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="2"/>
+          <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+          <circle cx="17" cy="7" r="1.5" fill="currentColor"/>
+        </svg>
+      </a>
+      <a href="mailto:natgene1950@gmail.com" class="social-link" aria-label="Email">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none">
+          <rect x="3" y="5" width="18" height="14" rx="3" stroke="currentColor" stroke-width="2"/>
+          <path d="M3 7l9 7l9-7" stroke="currentColor" stroke-width="2" fill="none"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <audio id="sound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_11fcf7a5e3.mp3"></audio>
+  <script src="../js/script.js"></script>
+</body>
+</html>
